@@ -71,7 +71,7 @@
                       alpha: true
                   });
                   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-                  renderer.setSize(640, 480);
+                  renderer.setSize(1920, 1080);
                   renderer.domElement.style.position = 'absolute'
                   renderer.domElement.style.top = '0px'
                   renderer.domElement.style.left = '0px'
@@ -110,8 +110,8 @@
                       detectionMode: 'mono_and_matrix',
                       matrixCodeType: "3x3",
                       maxDetectionRate: 60,
-                      canvasWidth: 640,
-                      canvasHeight: 480
+                      canvasWidth: 1920,
+                      canvasHeight: 1080
                   });
       
                   // Обновляем матрицу проекции камеры после окончания инициализации
@@ -153,7 +153,7 @@
 
                     // Если текущий маркер это баркод, создаём AR контроллер под баркод
                     // если текущий маркер это паттерн, аналогично создаём AR контроллер под паттерн
-                    alert("NoHello");
+                    alert("No2Hello");
                     
                     if (patternBarcode[i] === -1) {
                         let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
@@ -162,11 +162,15 @@
                         patternsID.push(patternNames[i]);
                       
                         markerControls1.addEventListener("markerFound", (e) => { alert("Hello") });
+                        markerControls1.addEventListener("onMarkerFound", (e) => { alert("Hello") });
                     } else {
                         let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
                             type: "barcode", barcodeValue: patternBarcode[i],
                         })
                         barcodesID.push(patternBarcode[i]);
+                      
+                        markerControls1.addEventListener("markerFound", (e) => { alert("Hello") });
+                        markerControls1.addEventListener("onMarkerFound", (e) => { alert("Hello") });
                     }
     
                     // Используем switch для работы с каждым отдельным случаем контента
