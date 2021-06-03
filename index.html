@@ -146,7 +146,7 @@
                   })
                   barcodesID.push(5);
 
-                  cardControl.addEventListener("markerFound", changeCard);
+                  cardControl.addEventListener("markerFound", (e) => changeCard(e));
 
                   let geometryCard = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
                   let loaderCard = new THREE.TextureLoader();
@@ -187,7 +187,9 @@
             
             
             function changeCard(event) {
-                if (typeof changeCard.last == undefined)
+                alert("Bye2");
+              
+                if (typeof changeCard.last === undefined)
                   changeCard.last = totalTime;
               
                 if (changeCard.last < totalTime - 10) {
@@ -199,8 +201,6 @@
                     mesh1.material.map = loader.load(`${cardName}`, render);
                     mesh1.material.needsUpdate = true;
                 }
-              
-                alert("Bye2");
             }
 
             
