@@ -127,7 +127,7 @@
                   const patternNames = [""];
                   // Maссив баркодов, заполняется одновременно с массивом паттернов
                   // если вместо баркода был добавлен .patt, на его место в массив добавляется -1
-                  const patternBarcode = [5, 6];
+                  const patternBarcode = [5, 13];
                   // Массив типов контента для каждого маркера, заполняется значиями: изображение, модель, видео
                   const modes = ["image", "image"];
                   // Массив файлов моделей, если нет модели будет добавлена пустая строка
@@ -196,7 +196,7 @@
                         case 'image':
                             if (imageFiles[i]) {
                                 // Объявляем плоскость под изображение
-                                let geometry1 = new THREE.PlaneBufferGeometry(25, 25, 100, 100);
+                                let geometry1 = new THREE.PlaneBufferGeometry(3, 2, 12, 7);
                                 // Загружаем изображение
                                 let loader = new THREE.TextureLoader();
                                 let texture = loader.load(`${imageFiles[i]}`, render);
