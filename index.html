@@ -74,7 +74,7 @@
                       alpha: true
                   });
                   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-                  renderer.setSize(640, 480);
+                  renderer.setSize(1280, 720);
                   renderer.domElement.style.position = 'absolute'
                   renderer.domElement.style.top = '0px'
                   renderer.domElement.style.left = '0px'
@@ -113,8 +113,8 @@
                       detectionMode: 'mono_and_matrix',
                       matrixCodeType: "3x3",
                       maxDetectionRate: 30,
-                      canvasWidth: 640,
-                      canvasHeight: 480
+                      canvasWidth: 1280,
+                      canvasHeight: 720
                   });
       
                   // Обновляем матрицу проекции камеры после окончания инициализации
@@ -139,7 +139,7 @@
                 
                   mainContainer.add(markerRoots[0]);
 
-                  alert("No11Hello");
+                  alert("No12Hello");
 
                   let cardControl = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[0], {
                       type: "barcode", barcodeValue: 5,
@@ -187,8 +187,6 @@
             
             
             function changeCard(event) {
-                alert("Bye2");
-              
                 if (typeof changeCard.last === undefined)
                   changeCard.last = totalTime;
               
