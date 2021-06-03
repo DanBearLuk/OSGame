@@ -73,7 +73,7 @@
                       alpha: true
                   });
                   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-                  renderer.setSize(1280, 720);
+                  renderer.setSize(640, 480);
                   renderer.domElement.style.position = 'absolute'
                   renderer.domElement.style.top = '0px'
                   renderer.domElement.style.left = '0px'
@@ -112,8 +112,8 @@
                       detectionMode: 'mono_and_matrix',
                       matrixCodeType: "3x3",
                       maxDetectionRate: 30,
-                      canvasWidth: 1280,
-                      canvasHeight: 720
+                      canvasWidth: 640,
+                      canvasHeight: 480
                   });
       
                   // Обновляем матрицу проекции камеры после окончания инициализации
@@ -190,15 +190,16 @@
                 if (last == 0)
                     last = totalTime;
               
-                alert(changeCard.last + " " + totalTime);
+                alert(last + " " + totalTime);
               
-                if (last < totalTime - 30) {
+                if (last < totalTime - 20) {
                     alert("Bye");
                     last = totalTime;
                                 
+                    let loader = new THREE.TextureLoader();
                     let cardName = cards[Math.floor(Math.random() * cards.length)];
-                    mesh1.material.map = loader.load(`${cardName}`, render);
-                    mesh1.material.needsUpdate = true;
+                    card.material.map = loader.load(`${cardName}`, render);
+                    card.material.needsUpdate = true;
                 }
             }
 
@@ -217,6 +218,7 @@
                 }
             }
 
+            
             function detectCollisionCubes (object1, object2) {
                 object1.geometry.computeBoundingBox();
                 object2.geometry.computeBoundingBox();
