@@ -44,7 +44,8 @@
 
               let controller;
             
-              let mesh1;
+              let card;
+              let cards = ["Cards/Card1.png", "Cards/Card2.png", "Cards/Card3.png", "Cards/Card4.png", "Cards/Card5.png", "Cards/Card6.png"];
 
               // Инициализируем сцену и запускаем цикл анимации
               initialize();
@@ -126,32 +127,48 @@
 
                   // Maссив баркодов, заполняется одновременно с массивом паттернов
                   // если вместо баркода был добавлен .patt, на его место в массив добавляется -1
-                  const patternBarcode = [5];
+                  const patternBarcode = [];
                   // Массив файлов изображений, если нет изображения будет добавлена пустая строка
-                  const imageFiles = ["Cards/Card1.png"];
+                  const imageFiles = [""];
   
                   // Создаём массив для всех маркеров
                   const markerRoots = [];
                   for (let i = 0; i < 1; i++) {
                       markerRoots[i] = new THREE.Group();
                   }
+                
+                  mainContainer.add(markerRoots[0]);
+
+                  alert("No9Hello");
+
+                  let cardControl = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[0], {
+                      type: "barcode", barcodeValue: 5,
+                  })
+                  barcodesID.push(5);
+
+                  cardControl.addEventListener("markerFound", changeCard);
+
+                  let geometryCard = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
+                  let loaderCard = new THREE.TextureLoader();
+                  let cardName = cards[Math.floor(Math.random() * cards.length)];
+                  let textureCard = loader.load(`${cardName}`, render);
+                  let materialCard = new THREE.MeshBasicMaterial({ map: textureCard, side: THREE.DoubleSide });
+                  card = new THREE.Mesh(geometryCard, materialCard);
+                  card.rotation.x = -Math.PI / 2;
+                  markerRoots[0].add(card);
   
                   // Проходимся по каждому маркеру из массива и добавляем его в главный контейнер 
-                  for (let i = 0; i < 1; i++) {
+                  for (let i = 1; i < 1; i++) {
                       mainContainer.add(markerRoots[i]);
-
-                      alert("No8Hello");
 
                       let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
                           type: "barcode", barcodeValue: patternBarcode[i],
                       })
                       barcodesID.push(patternBarcode[i]);
 
-                      markerControls1.addEventListener("markerFound", changeCard);
-
                       if (imageFiles[i]) {
                           // Объявляем плоскость под изображение
-                          let geometry1 = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
+                          let geometry1 = new THREE.PlaneBufferGeometry(2, 2, 8, 8);
                           // Загружаем изображение
                           let loader = new THREE.TextureLoader();
                           let texture = loader.load(`${imageFiles[i]}`, render);
@@ -168,18 +185,25 @@
                 scene.add(mainContainer);
             }
             
+            
             function changeCard(event) {
                 if (typeof changeCard.last == undefined)
-                  changeCard.last = 0;
+                  changeCard.last = totalTime;
               
                 if (changeCard.last < totalTime - 10) {
                     alert("Bye");
                     changeCard.last = totalTime;
+                  
+                                
+                    let cardName = cards[Math.floor(Math.random() * cards.length)];
+                    mesh1.material.map = loader.load(`${cardName}`, render);
+                    mesh1.material.needsUpdate = true;
                 }
               
                 alert("Bye2");
             }
 
+            
             function checkController() {
                 if (controller) {
                     mainContainer.traverse((object) => {
