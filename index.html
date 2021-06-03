@@ -185,16 +185,17 @@
                 scene.add(mainContainer);
             }
             
+            let last = 0;
             
             function changeCard(event) {
-                if (typeof changeCard.last === undefined)
-                  changeCard.last = totalTime;
+                if (last == 0)
+                    last = totalTime;
               
                 alert(changeCard.last + " " + totalTime);
               
-                if (changeCard.last < totalTime - 10) {
+                if (last < totalTime - 30) {
                     alert("Bye");
-                    changeCard.last = totalTime;
+                    last = totalTime;
                                 
                     let cardName = cards[Math.floor(Math.random() * cards.length)];
                     mesh1.material.map = loader.load(`${cardName}`, render);
