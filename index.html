@@ -147,8 +147,7 @@
                       })
                       barcodesID.push(patternBarcode[i]);
 
-                      markerControls1.addEventListener("onMarkerFound", changeCard);
-                      markerControls1.addEventListener("markerFound", (e) => { alert("Bye333") });
+                      markerControls1.addEventListener("markerFound", changeCard);
 
                       if (imageFiles[i]) {
                           // Объявляем плоскость под изображение
@@ -177,8 +176,6 @@
                     alert("Bye");
                     changeCard.last = totalTime;
                 }
-              
-                alert("Bye2");
             } 
 
             function checkController() {
