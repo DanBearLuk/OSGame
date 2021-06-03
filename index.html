@@ -139,7 +139,7 @@
                 
                   mainContainer.add(markerRoots[0]);
 
-                  alert("No12Hello");
+                  alert("No13Hello");
 
                   let cardControl = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[0], {
                       type: "barcode", barcodeValue: 5,
@@ -189,6 +189,8 @@
             function changeCard(event) {
                 if (typeof changeCard.last === undefined)
                   changeCard.last = totalTime;
+              
+                alert(changeCard.last + " " + totalTime);
               
                 if (changeCard.last < totalTime - 10) {
                     alert("Bye");
