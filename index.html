@@ -139,7 +139,7 @@
                 
                   mainContainer.add(markerRoots[0]);
 
-                  alert("No9Hello");
+                  alert("No10Hello");
 
                   let cardControl = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[0], {
                       type: "barcode", barcodeValue: 5,
@@ -151,7 +151,7 @@
                   let geometryCard = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
                   let loaderCard = new THREE.TextureLoader();
                   let cardName = cards[Math.floor(Math.random() * cards.length)];
-                  let textureCard = loader.load(`${cardName}`, render);
+                  let textureCard = loaderCard.load(`${cardName}`, render);
                   let materialCard = new THREE.MeshBasicMaterial({ map: textureCard, side: THREE.DoubleSide });
                   card = new THREE.Mesh(geometryCard, materialCard);
                   card.rotation.x = -Math.PI / 2;
