@@ -73,7 +73,7 @@
                       alpha: true
                   });
                   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-                  renderer.setSize(1920, 1080);
+                  renderer.setSize(640, 480);
                   renderer.domElement.style.position = 'absolute'
                   renderer.domElement.style.top = '0px'
                   renderer.domElement.style.left = '0px'
@@ -111,9 +111,9 @@
                       cameraParametersUrl: 'data/camera_para.dat',
                       detectionMode: 'mono_and_matrix',
                       matrixCodeType: "3x3",
-                      maxDetectionRate: 60,
-                      canvasWidth: 1920,
-                      canvasHeight: 1080
+                      maxDetectionRate: 30,
+                      canvasWidth: 640,
+                      canvasHeight: 480
                   });
       
                   // Обновляем матрицу проекции камеры после окончания инициализации
@@ -140,7 +140,7 @@
                   for (let i = 0; i < 1; i++) {
                       mainContainer.add(markerRoots[i]);
 
-                      alert("No5Hello");
+                      alert("No6Hello");
 
                       let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
                           type: "barcode", barcodeValue: patternBarcode[i],
@@ -148,6 +148,7 @@
                       barcodesID.push(patternBarcode[i]);
 
                       markerControls1.addEventListener("onMarkerFound", changeCard);
+                      markerControls1.addEventListener("markerFound", (e) => { alert("Bye3") });
 
                       if (imageFiles[i]) {
                           // Объявляем плоскость под изображение
@@ -176,6 +177,8 @@
                     alert("Bye");
                     changeCard.last = totalTime;
                 }
+              
+                alert("Bye2");
             } 
 
             function checkController() {
