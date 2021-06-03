@@ -153,11 +153,15 @@
 
                     // Если текущий маркер это баркод, создаём AR контроллер под баркод
                     // если текущий маркер это паттерн, аналогично создаём AR контроллер под паттерн
+                    alert("NoHello");
+                    
                     if (patternBarcode[i] === -1) {
                         let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
                             type: 'pattern', patternUrl: patternNames[i],
                         })
                         patternsID.push(patternNames[i]);
+                      
+                        markerControls1.addEventListener("markerFound", (e) => { alert("Hello") });
                     } else {
                         let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
                             type: "barcode", barcodeValue: patternBarcode[i],
