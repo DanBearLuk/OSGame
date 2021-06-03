@@ -126,43 +126,41 @@
                   // если вместо баркода был добавлен .patt, на его место в массив добавляется -1
                   const patternBarcode = [5];
                   // Массив файлов изображений, если нет изображения будет добавлена пустая строка
-                  const imageFiles = ["Card.png"];
+                  const imageFiles = ["Cards/Card1.png"];
   
                   // Создаём массив для всех маркеров
                   const markerRoots = [];
                   for (let i = 0; i < 1; i++) {
-                        markerRoots[i] = new THREE.Group();
+                      markerRoots[i] = new THREE.Group();
                   }
   
                   // Проходимся по каждому маркеру из массива и добавляем его в главный контейнер 
                   for (let i = 0; i < 1; i++) {
-                    mainContainer.add(markerRoots[i]);
+                      mainContainer.add(markerRoots[i]);
 
-                    // Если текущий маркер это баркод, создаём AR контроллер под баркод
-                    // если текущий маркер это паттерн, аналогично создаём AR контроллер под паттерн
-                    alert("No3Hello");
-                    
-                    let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
-                        type: "barcode", barcodeValue: patternBarcode[i],
-                    })
-                    barcodesID.push(patternBarcode[i]);
+                      alert("No4Hello");
 
-                    markerControls1.addEventListener("onMarkerFound", changeCard);
-    
-                    if (imageFiles[i]) {
-                        // Объявляем плоскость под изображение
-                        let geometry1 = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
-                        // Загружаем изображение
-                        let loader = new THREE.TextureLoader();
-                        let texture = loader.load(`${imageFiles[i]}`, render);
-                        let material1 = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-                        mesh1 = new THREE.Mesh(geometry1, material1);
-                        // Поворачиваем плоскость
-                        mesh1.rotation.x = -Math.PI / 2;
-                        // Добавляем плоскость в контейнер
-                        markerRoots[i].add(mesh1);
-                    }
-                }
+                      let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
+                          type: "barcode", barcodeValue: patternBarcode[i],
+                      })
+                      barcodesID.push(patternBarcode[i]);
+
+                      markerControls1.addEventListener("onMarkerFound", changeCard);
+
+                      if (imageFiles[i]) {
+                          // Объявляем плоскость под изображение
+                          let geometry1 = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
+                          // Загружаем изображение
+                          let loader = new THREE.TextureLoader();
+                          let texture = loader.load(`${imageFiles[i]}`, render);
+                          let material1 = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+                          mesh1 = new THREE.Mesh(geometry1, material1);
+                          // Поворачиваем плоскость
+                          mesh1.rotation.x = -Math.PI / 2;
+                          // Добавляем плоскость в контейнер
+                          markerRoots[i].add(mesh1);
+                      }
+                  }
     
                 // Добавляем главный контейнер на сцену
                 scene.add(mainContainer);
@@ -172,7 +170,7 @@
                 if (typeof changeCard.last == undefined)
                   changeCard.last = 0;
               
-                if (changeCard.last < totalTime - 5000) {
+                if (changeCard.last < totalTime - 10) {
                     alert("Bye");
                     changeCard.last = totalTime;
                 }
