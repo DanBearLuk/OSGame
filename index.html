@@ -110,8 +110,8 @@
                       detectionMode: 'mono_and_matrix',
                       matrixCodeType: "3x3",
                       maxDetectionRate: 60,
-                      canvasWidth: 640,
-                      canvasHeight: 480
+                      canvasWidth: 1733,
+                      canvasHeight: 511
                   });
       
                   // Обновляем матрицу проекции камеры после окончания инициализации
@@ -196,7 +196,7 @@
                         case 'image':
                             if (imageFiles[i]) {
                                 // Объявляем плоскость под изображение
-                                let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
+                                let geometry1 = new THREE.PlaneBufferGeometry(25, 10, 100, 100);
                                 // Загружаем изображение
                                 let loader = new THREE.TextureLoader();
                                 let texture = loader.load(`${imageFiles[i]}`, render);
