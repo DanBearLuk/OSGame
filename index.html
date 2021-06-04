@@ -146,7 +146,7 @@
 
                   cardControl.addEventListener("markerFound", (e) => changeCard(e));
 
-                  let geometryCard = new THREE.PlaneBufferGeometry(3, 2, 12, 8);
+                  let geometryCard = new THREE.PlaneBufferGeometry(6, 4, 24, 12);
                   let loaderCard = new THREE.TextureLoader();
                   let cardName = cards[Math.floor(Math.random() * cards.length)];
                   let textureCard = loaderCard.load(`${cardName}`, render);
